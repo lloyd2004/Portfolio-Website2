@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Website</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      background: url('https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pZ2h0JTIwc2t5fGVufDB8fDB8fHww') no-repeat center center/cover;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #0078d7;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(31, 64, 55, 0.7);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #0056a3;
+    }
+
+    /* About Section */
+    .about {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      background: white;
+    }
+
+    .about .text {
+      flex: 1;
+      max-width: 600px;
+      margin-right: 20px;
+    }
+
+    .about .text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #0078d7;
+    }
+
+    .about .text p {
+      line-height: 1.8;
+    }
+
+    .about img {
+      flex: 1;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Skills Section */
+    .skills {
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .skills h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .skills-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .skills-list .skill {
+      position: relative;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .skills-list .skill::after {
+      content: attr(data-percentage) '%';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      color: #fff;
+      background: #0078d7;
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    .skills-list .skill:hover {
+      transform: translateY(-5px);
+    }
+
+    /* FAQ Section */
+    .faq {
+      background: #f9f9f9;
+      padding: 60px 20px;
+    }
+
+    .faq h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      color: #0078d7;
+      margin-bottom: 40px;
+    }
+
+    .faq-item {
+      background: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .faq-item p {
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      color: #0078d7;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .contact a {
+      color: #0078d7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Hello, I'm a Developer</h1>
+      <p>Creating visually stunning and functional web experiences.</p>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="text">
+      <h2>About Me</h2>
+      <p>Currently 3rd year college and from Pampanga, 20 years old and I often do cooking, watching movies, and so on. i am a dedicated programmer with expertise in modern web development technologies. I am passionate about creating intuitive and user-friendly web applications. My journey in coding has been fueled by a desire to continuously learn and grow.</p>
+    </div>
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/471447140_3427672200719240_1733352331958166196_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGWBR4vkvyF6MK9a55E1BewWtpKqlwUBSJa2kqqXBQFIoTW6AXb2xXXwD0lAt2XnEBjMoYRZ2SrsQd92kIPceGj&_nc_ohc=wCW_qvs6oDMQ7kNvgElJo3x&_nc_oc=Adjo1csa0tFFsPwecQzDc3ZQIL7cBUr2XcIxbzUCuYXuPiQ_NNjJswmdrKaShHEnuKc&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=AjMXQNDVeSWoMI4Ldo7k3NJ&oh=00_AYA1Gn-JEoRFcKoURsIuivn7DONWnm6IL2DMWclRcbwzag&oe=67AF90F0" alt="About Me">
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>My Skills</h2>
+    <div class="skills-list">
+      <div class="skill" data-percentage="90">HTML</div>
+      <div class="skill" data-percentage="85">CSS</div>
+      <div class="skill" data-percentage="80">JavaScript</div>
+      <div class="skill" data-percentage="75">React</div>
+      <div class="skill" data-percentage="70">Node.js</div>
+      <div class="skill" data-percentage="95">Python</div>
+      <div class="skill" data-percentage="80">PHP</div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What services do you offer?</h3>
+      <p>I specialize in creating responsive and user-friendly web applications, backend development, and website optimization.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What technologies do you use?</h3>
+      <p>I am proficient in HTML, CSS, JavaScript, React, Node.js, Python, and PHP, among other modern technologies.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is your favorite food?</h3>
+      <p>Anything but my favorite is pork sisig</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:jsmacay.student@asiancollege.edu.ph">jsmacay.student@asiancollege.edu.ph</a></p>
+    <p>Phone: +63612773949</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 John Lloyd Macay | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
